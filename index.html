@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Markdown Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>MarkdownMate</h1>
+  <div class="container">
+    <textarea id="markdown-input" placeholder="Type your Markdown here..."></textarea>
+    <div id="preview"></div>
+  </div>
+
+  <footer>
+    Built with ❤️ by
+    <a href="https://github.com/ganesh-bruno" target="_blank">
+      <span id="github-avatar">
+        <!-- Avatar will be injected here -->
+      </span>
+    </a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script>
+    const input = document.getElementById('markdown-input');
+    const preview = document.getElementById('preview');
+
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+      mangle: false,
+    });
+
+    const updatePreview = () => {
+      try {
+        preview.innerHTML = marked.parse(input.value);
+      } catch (err) {
+        preview.innerHTML = '<p style="color: red;">Error rendering Markdown</p>';
+        console.error('Markdown parsing error:', err);
+      }
+    };
+
+    input.addEventListener('input', updatePreview);
+
+    updatePreview();
+
+    async function loadGitHubAvatar(username) {
+      const avatarContainer = document.getElementById('github-avatar');
+
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        const data = await response.json();
+
+        const avatar = document.createElement('img');
+        avatar.src = data.avatar_url;
+        avatar.alt = `${username}'s avatar`;
+        avatar.width = 20;
+        avatar.height = 20;
+        avatar.style.borderRadius = '50%';
+        avatar.style.marginRight = '8px';
+
+        const name = document.createElement('span');
+        name.textContent = `@${username}`;
+
+        avatarContainer.appendChild(avatar);
+        avatarContainer.appendChild(name);
+      } catch (error) {
+        console.error('Failed to load GitHub avatar:', error);
+        avatarContainer.textContent = `@${username}`;
+      }
+    }
+
+    loadGitHubAvatar('ganesh-bruno');
+  </script>
+</body>
+</html>
