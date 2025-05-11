@@ -1,6 +1,8 @@
 # 📝 MarkDownMate
 
-**MarkDownMate** is a simple and lightweight Markdown viewer that lets you preview your markdown content exactly as it would appear on platforms like GitHub. It's perfect for writers, developers, and anyone who works with `.md` files and wants a real-time preview without committing changes or pushing to a repo.
+**MarkDownMate** is a simple and lightweight Markdown viewer that lets you preview your markdown content exactly as it would appear on platforms like GitHub. 
+
+It's perfect for writers, developers, and anyone who works with `.md` files and wants a real-time preview without committing changes or pushing to a repo.
 
 ---
 
