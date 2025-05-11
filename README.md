@@ -7,8 +7,6 @@ It's perfect for writers, developers, and anyone who works with `.md` files and 
 ![image](https://github.com/user-attachments/assets/b8095124-f42c-4602-a49a-59046966017c)
 
 
----
-
 ## 🚀 Features
 
 - 🔄 **Live Preview** – See your rendered Markdown as you type
